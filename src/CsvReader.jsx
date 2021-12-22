@@ -2,6 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import DataTable from 'react-data-table-component';
 
+
+
 function CsvReader(props) {
 
     const [csvFile, setCsvFile] = useState()
@@ -122,10 +124,19 @@ const submit = () => {
   
     return (
         <div>
-
-        
+          <header id = "header">
+            <div>
+            <h1>Outdoor.sy</h1>
+            <h4>Upload your customer lists and display it in a sortable table!</h4>
+            </div>
+            <div>
+            <p>Please ensure that your file is in .txt or .csv format.</p>
+            </div>
+          </header>
+        <div id = "form-div">
         <form id = 'csv-form'>
-            <input
+          <p>Upload your file here:</p>
+            <input 
                 type = 'file'
                 accept = '.csv, .numbers, .txt'
                 id = 'csvfile'
@@ -134,7 +145,7 @@ const submit = () => {
                 }}
             />
             <br/>
-            <button
+            <button id = 'button'
                 onClick={(e) => {
                     e.preventDefault()
                     if(csvFile){submit()}
@@ -143,9 +154,13 @@ const submit = () => {
                 Submit
             </button>
         </form>
-        <div>
+
+        </div>
+        
+        <div id = "table">
         <br/>
             <br/>
+            <h2>Tables will display below</h2>
             <DataTable
             pagination
             highlightOnHover
