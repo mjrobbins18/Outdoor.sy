@@ -4,26 +4,32 @@ import DataTable from 'react-data-table-component';
 
 
 
-function CsvReader(props) {
+function CsvReader() {
 
+  // state
     const [csvFile, setCsvFile] = useState()
     const [data, setData] = useState([])
     const [columns, setColumns] = useState([])
 
+
+    // function for processing txt files that do not have headings, but explicitly fit the information described in the task
     const processTxtFile = (dataString) => {
       let dataArray = dataString.split(/\n/)
         const headers = ["First Name", "Last Name", "Email", "Vehicle Type", "Vehicle Name", "Vehicle Length"]
         const list = []
         
+        // table rows
         for (let i = 0; i < dataArray.length; i ++){
           let row = []
+
+          // checks for data separated by | or ,
           if(dataArray[i].includes('|')){
             row = dataArray[i].split('|')
           }else{
             row = dataArray[i].split(',')
           }
           
-          console.log(row)
+          
           if (headers && row.length === headers.length){
             const obj = {}
             for (let j = 0; j < headers.length; j++){
@@ -51,10 +57,8 @@ function CsvReader(props) {
         setColumns(columns);
     }
 
-    const processData = dataString => {
-        console.log('datastring',dataString)
-        
-          
+// function for processing csv files that has headings already
+    const processData = (dataString) => {
         // splits data into array where each item is each line of data, with dataStringlines[0] being the header, and everything else being the data to populate the table
         const dataStringLines = dataString.split(/\r\n|\n/);
         console.log('lines',dataStringLines)
@@ -103,13 +107,14 @@ function CsvReader(props) {
         setColumns(columns);
       }
 
+      // function to handle submit button
 const submit = () => {
         const file = csvFile
         const reader = new FileReader()
+
         reader.onload = function(e) {
             const text = e.target.result
-            console.log(text)
-            console.log(file)
+            // checks whether the file is a txt file
             if(file.type === "text/plain"){
               processTxtFile(text)
             }else{
@@ -117,6 +122,7 @@ const submit = () => {
             }
             
         }
+        // converts the contents of the file to a string
         reader.readAsText(file)
         
     }
