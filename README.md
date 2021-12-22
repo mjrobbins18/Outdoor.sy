@@ -1,6 +1,7 @@
 
 # Outdoor.sy
 ## Outdoor.sy is an app that converts .csv and .txt files into a table format.
+All of the code is located in the CsvReader.jsx file
 ----------
 The app is deployed via Heroku and can be accessed here:
 https://obscure-cliffs-09548.herokuapp.com/
