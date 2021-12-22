@@ -10,7 +10,7 @@ https://obscure-cliffs-09548.herokuapp.com/
 - Upload your .csv or .txt file.
 - Press the submit button.
 - Admire your information displayed below in a beautiful table.
-- Sort the information based on any column using the arrow next to the header of each column.
+- Sort the information in any column using the arrow next to the header of each column.
 - Data is only stored locally, so will not be saved upon leaving the page or reloading.
 
 --------
